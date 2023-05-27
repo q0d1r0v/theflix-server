@@ -36,6 +36,9 @@ const GetCategories = require('../modules/Categories/get-categories')
 const UpdateCategory = require('../modules/Categories/update-category')
 const DeleteCategory = require('../modules/Categories/delete-category')
 const CreateMovie = require('../modules/Movies/create-movie-post')
+const GetMovies = require('../modules/Movies/get-movies')
+const SendMovieFile = require('../modules/Movies/send-movie-file')
+const DeleteMoviePost = require('../modules/Movies/delete-movie-post')
 
 // login or register route
 router.post('/auth/login', AuthLogin)
@@ -51,5 +54,8 @@ router.get('/api/get-categories', GetCategories)
 router.put('/api/update-category', UpdateCategory)
 router.delete('/api/delete-category', DeleteCategory)
 router.post('/api/create-movie', upload.single('movie'), CreateMovie)
+router.get('/api/get-movies', GetMovies)
+router.get('/api/get-movie-file', SendMovieFile)
+router.delete('/api/delete-movie-post', DeleteMoviePost)
 
 module.exports = router

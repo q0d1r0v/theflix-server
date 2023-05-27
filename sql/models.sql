@@ -16,12 +16,13 @@ CREATE TABLE categories(
 
 CREATE TABLE movie_posts(
     id SERIAL,
+    name TEXT,
     country TEXT NOT NULL,
     movie_date TEXT NOT NULL,
-    category_id TEXT NOT NULL,
+    category_name TEXT NOT NULL,
     language TEXT NOT NULL,
     duration TEXT NOT NULL,
-    path_to_file TEXT NOT NULL,
+    file_name TEXT NOT NULL,
     rating TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
