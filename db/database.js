@@ -1,4 +1,4 @@
-const {Pool} = require('pg')
+const { Pool } = require('pg')
 
 const pool = new Pool({
     host: process.env.DB_HOST_NAME,
@@ -9,8 +9,12 @@ const pool = new Pool({
 })
 
 pool.connect((err) => {
-    if(err) throw err
-    console.log("Connected to db!")
+    try {
+        if (err) throw err
+        console.log("Connected to db!")
+    } catch (e) {
+        console.log(e)
+    }
 })
 
 module.exports = pool

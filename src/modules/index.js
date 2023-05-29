@@ -1,7 +1,11 @@
 const IndexModule = (req, res) => {
-    res.send({
-        message: "This is docs page"
-    })
+    try {
+        res.send({
+            message: "This is docs page"
+        })
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 module.exports = IndexModule

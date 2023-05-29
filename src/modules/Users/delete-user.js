@@ -2,23 +2,22 @@
 const database = require('../../../db/database')
 
 const DeleteUser = async (req, res) => {
-    const { user_id } = req.query
+    try {
+        const { user_id } = req.query
 
-    if (user_id) {
-        try {
+        if (user_id) {
             await database.query(`DELETE FROM users WHERE id = '${user_id}'`)
             res.status(200).send({
                 message: "User deleted!"
             })
-        } catch (e) {
-            console.log(e)
+        } else {
+            res.status(400).send({
+                message: "You don't send full data!"
+            })
         }
-    } else {
-        res.status(400).send({
-            message: "You don't send full data!"
-        })
+    } catch (e) {
+        console.log(e)
     }
-    console.log()
 }
 
 module.exports = DeleteUser

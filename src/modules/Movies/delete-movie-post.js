@@ -4,10 +4,10 @@ const fs = require('fs')
 const path = require('path')
 
 const DeleteMoviePost = async (req, res) => {
-    const { post_id } = req.query
+    try {
+        const { post_id } = req.query
 
-    if (post_id) {
-        try {
+        if (post_id) {
             const folder_dir_name = path.join(__dirname, '../../movies/')
             const post = await database.query(`SELECT * FROM movie_posts WHERE id = '${post_id}'`)
 
@@ -26,13 +26,13 @@ const DeleteMoviePost = async (req, res) => {
                     message: "We don't have this file!"
                 })
             }
-        } catch (e) {
-            console.log(e)
+        } else {
+            res.status(400).send({
+                message: "Don't send post id in params!"
+            })
         }
-    } else {
-        res.status(400).send({
-            message: "Don't send post id in params!"
-        })
+    } catch (e) {
+        console.log(e)
     }
 }
 

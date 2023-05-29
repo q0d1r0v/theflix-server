@@ -1,19 +1,6 @@
 // imports
 const express = require('express')
-const path = require('path')
-const multer = require('multer')
-
-// config of upload
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '../movies/'))
-    },
-    filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix + '.mp4')
-    }
-})
-const upload = multer({storage: storage})
+const uploads = require('../storage/storage')
 
 // middleware
 const auth = require('../middleware/auth')
@@ -39,23 +26,27 @@ const CreateMovie = require('../modules/Movies/create-movie-post')
 const GetMovies = require('../modules/Movies/get-movies')
 const SendMovieFile = require('../modules/Movies/send-movie-file')
 const DeleteMoviePost = require('../modules/Movies/delete-movie-post')
+const Rate = require('../modules/Movies/rating/rate')
+const GetTopMovies = require('../modules/Movies/rating/get-top-movies')
 
 // login or register route
 router.post('/auth/login', AuthLogin)
 router.post('/auth/register', AuthRegister)
 
 // api modules
+router.get('/', IndexModule)
 router.use('/api/', auth)
-router.get('/api/index', IndexModule)
 router.get('/api/get-users', GetUsers)
 router.delete('/api/delete-user', DeleteUser)
 router.post('/api/create-category', CreateCategory)
 router.get('/api/get-categories', GetCategories)
 router.put('/api/update-category', UpdateCategory)
 router.delete('/api/delete-category', DeleteCategory)
-router.post('/api/create-movie', upload.single('movie'), CreateMovie)
+router.post('/api/create-movie', uploads, CreateMovie)
 router.get('/api/get-movies', GetMovies)
 router.get('/api/get-movie-file', SendMovieFile)
 router.delete('/api/delete-movie-post', DeleteMoviePost)
+router.post('/api/rate-movie', Rate)
+router.get('/api/get-top-movies', GetTopMovies)
 
 module.exports = router

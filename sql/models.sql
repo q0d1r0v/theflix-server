@@ -1,3 +1,4 @@
+-- Models of Postgresql database
 CREATE DATABASE theflix_db;
 
 CREATE TABLE users(
@@ -22,7 +23,9 @@ CREATE TABLE movie_posts(
     category_name TEXT NOT NULL,
     language TEXT NOT NULL,
     duration TEXT NOT NULL,
-    file_name TEXT NOT NULL,
+    movie_file_name TEXT NOT NULL,
+    cover_image_file_name TEXT NOT NULL,
+    trailer TEXT,
     rating TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
