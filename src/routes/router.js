@@ -28,14 +28,15 @@ const SendMovieFile = require('../modules/Movies/send-movie-file')
 const DeleteMoviePost = require('../modules/Movies/delete-movie-post')
 const Rate = require('../modules/Movies/rating/rate')
 const GetTopMovies = require('../modules/Movies/rating/get-top-movies')
+const ReturnUser = require('../modules/Users/return-user')
 
 // login or register route
 router.post('/auth/login', AuthLogin)
 router.post('/auth/register', AuthRegister)
 
 // api modules
+router.use('/', auth)
 router.get('/', IndexModule)
-router.use('/api/', auth)
 router.get('/api/get-users', GetUsers)
 router.delete('/api/delete-user', DeleteUser)
 router.post('/api/create-category', CreateCategory)
@@ -48,5 +49,6 @@ router.get('/api/get-movie-file', SendMovieFile)
 router.delete('/api/delete-movie-post', DeleteMoviePost)
 router.post('/api/rate-movie', Rate)
 router.get('/api/get-top-movies', GetTopMovies)
+router.get('/api/return-user', ReturnUser)
 
 module.exports = router

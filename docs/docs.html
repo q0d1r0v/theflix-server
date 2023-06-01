@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theflix server api docs</title>
+
+    <style>
+        body,
+        html {
+            font-family: sans-serif
+        }
+
+        pre {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        1: Register api => /auth/register
+        <pre>
+            METHOD => POST
+            {
+                "key_word": "",
+                "full_name": "",
+                "username": "",
+                "password": ""
+            }
+        </pre>
+    </div>
+
+
+    <div>
+        2: Login api => /auth/login
+        <pre>
+            METHOD => POST
+            {
+                "username": "",
+                "password": ""
+            }
+        </pre>
+    </div>
+
+    <div>
+        3: Get users api => /api/get-users
+        <pre>
+            METHOD => GET
+            params: {
+                "page_number": ""
+            }
+        </pre>
+    </div>
+
+    <div>
+        4: Delete user api => /api/delete-user
+        <pre>
+            METHOD => DELETE
+            params: {
+                "user_id": ""
+            }
+        </pre>
+    </div>
+
+    <div>
+        5: Create category api => /api/create-category
+        <pre>
+            METHOD => POST
+            {
+                "name": "",
+                "key": ""
+            }
+        </pre>
+    </div>
+
+    <div>
+        6: Get categories api => /api/get-categories
+        <pre>
+            METHOD => GET
+            params:{
+                "page_number": ''
+            }
+        </pre>
+    </div>
+
+    <div>
+        7: Delete category api => /api/delete-category
+        <pre>
+            METHOD => DELETE
+            params:{
+                "category_id": ''
+            }
+        </pre>
+    </div>
+
+    <div>
+        8: Update category api => /api/update-category
+        <pre>
+            METHOD => PUT
+            params:{
+                "category_id": "",
+                "new_name": "",
+                "new_key": ""
+            }
+        </pre>
+    </div>
+
+    <div>
+        9: Create movie api => /api/create-movie
+        <pre>
+            METHOD => POST
+            formData:{
+                "country": "",
+                "movie_date": "",
+                "category_id": "",
+                "language": "",
+                "duration": "",
+                "rating": "",
+                "trailer": "",
+                "movie": type .mp4 file,
+                "cover_image": type .png file,
+            }
+        </pre>
+    </div>
+
+    <div>
+        10: Get movies api => /api/get-movies
+        <pre>
+            METHOD => GET
+            params:{
+                "page_number": "",
+                "movie_name": ""
+            }
+        </pre>
+    </div>
+
+    <div>
+        11: Get movie file api => /api/get-movie-file
+        <pre>
+            METHOD => GET
+            params:{
+                "file_name": ""
+            }
+        </pre>
+    </div>
+
+    <div>
+        12: Delete movie post api => /api/delete-movie-post
+        <pre>
+            METHOD => DELETE
+            params:{
+                "post_id": ""
+            }
+        </pre>
+    </div>
+
+    <div>
+        13: Rate to movie post api => /api/rate-movie
+        <pre>
+            METHOD => POST
+            {
+                "movie_post_id": "",
+                "like" || "unlike": boolean
+            }
+        </pre>
+    </div>
+
+    <div>
+        14: Get top movies api => /api/get-top-movies
+        <pre>
+            METHOD => GET
+        </pre>
+    </div>
+
+    <div>
+        15: Return user api => /api/return-user
+        <pre>
+            METHOD => GET
+
+            send access_token in headers.authorization
+        </pre>
+    </div>
+</body>
+
+</html>
