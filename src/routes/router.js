@@ -36,7 +36,7 @@ router.post('/auth/register', AuthRegister)
 
 // api modules
 router.use('/', auth)
-router.get('/', IndexModule)
+router.get('/api/docs', IndexModule)
 router.get('/api/get-users', GetUsers)
 router.delete('/api/delete-user', DeleteUser)
 router.post('/api/create-category', CreateCategory)
