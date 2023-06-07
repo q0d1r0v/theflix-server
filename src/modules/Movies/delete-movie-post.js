@@ -13,7 +13,7 @@ const DeleteMoviePost = async (req, res) => {
 
             if (post.rows.length > 0) {
                 // delete file
-                fs.unlink(folder_dir_name + post.rows[0].file_name, async (err) => {
+                fs.unlink(folder_dir_name + post.rows[0].movie_file_name, async (err) => {
                     if (err) throw err
                     await database.query(`DELETE FROM movie_posts WHERE id = '${post_id}'`)
 
